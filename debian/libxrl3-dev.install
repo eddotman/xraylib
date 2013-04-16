@@ -1,0 +1,9 @@
+usr/include/xraylib/*h
+usr/lib/libxrl.a
+usr/lib/libxrl.la
+usr/lib/libxrl.so
+usr/lib/pkgconfig/libxrl.pc
+usr/lib/libxrlf03.so
+usr/lib/libxrlf03.la
+usr/include/xraylib/*mod
+usr/lib/pkgconfig/libxrlf03.pc

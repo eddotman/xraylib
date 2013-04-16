@@ -1,0 +1,27 @@
+Description: fixes xraylib python package building on Debian. It also changes the
+ installation permission modes of the python scripts
+Author: Tom Schoonjans <Tom.Schoonjans@me.com>
+Applied-Upstream: commit:https://github.com/tschoonj/xraylib/commit/a1a169628b81a77860296eafe761dee0b7e722f6
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -38,8 +38,8 @@
+ 	$(MKDIR_P) $(DESTDIR)$(pythondir)
+ 	$(MKDIR_P) $(DESTDIR)$(pyexecdir)
+ 	$(MKDIR_P) $(DESTDIR)$(bindir)
+-	$(INSTALL) xraylib.py xrayhelp.py xraymessages.py $(DESTDIR)$(pythondir)
+-	$(INSTALL) _xraylib.* $(DESTDIR)$(pyexecdir)
++	$(INSTALL) -m 0644 xraylib.py xrayhelp.py xraymessages.py $(DESTDIR)$(pythondir)
++	$(INSTALL) -s _xraylib.* $(DESTDIR)$(pyexecdir)
+ 	$(INSTALL) ${top_srcdir}/python/xraylib $(DESTDIR)$(bindir)
+ 
+ uninstall-local:
+--- a/python/xrlsetup.py.in
++++ b/python/xrlsetup.py.in
+@@ -20,6 +20,6 @@
+ from distutils.core import setup, Extension
+ 
+ 
+-xraylib_module = Extension('_xraylib', sources=['xraylib_wrap.c'],libraries = ['xrl', @PYTHON_LIBS_FIXED@], include_dirs = [@PYTHON_INCLUDE_FIXED@], library_dirs=['@abs_top_builddir@/src/.libs'])
++xraylib_module = Extension('_xraylib', sources=['xraylib_wrap.c'],libraries = ['xrl', @PYTHON_LIBS_FIXED@], include_dirs = [@PYTHON_INCLUDE_FIXED@], library_dirs=['@top_builddir@/src/.libs'])
+ 
+ setup (name = 'xraylib' ,version = '@PYTHON_XRL_VERSION@' , author = "Tom Schoonjans", description = """python bindings of xraylib""", ext_modules = [xraylib_module], py_modules = ["xraylib"])

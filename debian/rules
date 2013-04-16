@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+#
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+#
+# Modified to make a template file for a multi-binary package with separated
+# build-arch and build-indep targets  by Bill Allombert 2001
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+#export DH_OPTIONS
+
+# The versions of python currently supported
+PYVERS=$(shell pyversions -s)
+# The current default version of python
+PYVER=$(shell pyversions -d)
+CONFIGURE_FLAGS := --disable-java --disable-idl --disable-perl --disable-lua
+
+TARGETS := main $(PYVERS)
+
+override_dh_auto_configure: $(TARGETS:%=configure-%)
+
+configure-%:
+	dh_auto_configure --builddirectory=build/$* -- $(CONFIGURE_FLAGS)
+
+configure-main: CONFIGURE_FLAGS += --disable-python
+configure-python%: CONFIGURE_FLAGS += PYTHON=/usr/bin/$*
+
+override_dh_auto_build: $(TARGETS:%=build-%)
+
+build-%: BUILD_DIR=build/$*
+
+build-%:
+	$(if $(filter $(BUILD_DIR),build/$*),,[ -d $(BUILD_DIR) ] || mv build/$*/python $(BUILD_DIR))
+	dh_auto_build --builddirectory=$(BUILD_DIR) -- $(BUILD_FLAGS)
+
+build-python%: BUILD_DIR=build/main/$*
+
+install-main:
+	dh_auto_install --builddirectory=build/main
+
+install-python%:
+	dh_auto_install --builddirectory=build/main/python$*
+
+override_dh_strip:
+	dh_strip -a --dbg-package=libxrl3-dbg -Npython-libxrl3 -Nxraylib
+
+
+override_dh_auto_install: $(TARGETS:%=install-%)
+
+override_dh_auto_clean:
+	rm -rf build debian/tmp
+
+%:
+	dh --with autoreconf $@ 
+

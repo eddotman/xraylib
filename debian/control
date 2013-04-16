@@ -1,0 +1,130 @@
+Source: xraylib
+Section: science
+Priority: extra
+Maintainer: Tom Schoonjans <Tom.Schoonjans@me.com>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, gcc (>= 4.4.0), gfortran (>= 4.4), swig, python-all-dev (>= 2.6.6-3~), autoconf, automake, libtool, dh-autoreconf
+Standards-Version: 3.9.1
+Homepage: http://github.com/tschoonj/xraylib
+
+Package: libxrl3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A library for X-ray matter interactions: core C library
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides only the core C library of the xraylib package.
+
+
+Package: libxrl3-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends}, ${misc:Depends}, libxrl3 (= ${binary:Version}), libxrlf03-3 (= ${binary:Version})
+Description: A library for X-ray matter interactions: development tools
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides the necessary libraries, headers etc to start
+ your own xraylib based development.
+
+
+
+Package: libxrlf03-3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, gfortran (>= 4.4.0), libxrl3 (= ${binary:Version})
+Description: A library for X-ray matter interactions: fortran bindings
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides the fortran 2003 bindings of xraylib
+
+Package: libxrl3-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, gfortran (>= 4.4.0), libxrlf03-3 (= ${binary:Version})
+Description: A library for X-ray matter interactions: debugging-symbols
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides the debugging symbols of xraylib
+
+Package: python-libxrl3
+Section: python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libxrl3 (= ${binary:Version}), ${python:Depends}
+Description: A library for X-ray matter interactions: python bindings
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides the python bindings of xraylib
+
+Package: xraylib
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, python-libxrl3 (=${binary:Version})
+Description: A library for X-ray matter interactions: CLI
+ Quantitative estimate of elemental composition by spectroscopic and
+ imaging techniques using X-ray fluorescence requires the availability
+ of accurate data of X-ray interaction with matter. Although a wide
+ number of computer codes and data sets are reported in literature,
+ none of them is presented in the form of freely available library
+ functions which can be easily included in software applications for
+ X-ray fluorescence. This work presents a compilation of data sets
+ from different published works and an xraylib interface in the form
+ of callable functions. Although the target applications are on
+ X-ray fluorescence, cross sections of interactions like photoionization,
+ coherent scattering and Compton scattering, as well as form factors and
+ anomalous scattering functions, are also available.
+ .
+ This package provides the command line interface of xraylib
+
+

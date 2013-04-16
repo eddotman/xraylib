@@ -1,0 +1,4 @@
+usr/bin/xraylib
+usr/lib/python*/*-packages/xrayhelp.py*
+usr/lib/python*/*-packages/xraymessages.py*
+usr/share

@@ -1,0 +1,5 @@
+xraylib (2.16.0-1+squeeze) stable; urgency=low
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- Tom Schoonjans <Tom.Schoonjans@me.com>  Tue, 16 Apr 2013 15:43:12 +0200
